@@ -64,41 +64,8 @@ main {
   margin-left: 15%;
 	height: 100%;
 	width: 85%;
-	text-align: right;
 	overflow: hidden;
 }
-
-#test {
-	position: relative;
-	margin-top: 100px;
-	margin-left: 300px;
-	height: 100px;
-	width: 100px;
-	background-color: white;
-	text-align: center;
-
-	transition: 1s;
-	transition-timing-function: ease-out;
-
-}
-
-#test:hover {
-	width: 300px;
-	height: 300px;
-	font-size: 40px;
-}
-
-/*
-#status:target ~ #tasks #bots,
-#tasks:target ~ #status #bots,
-#bots:target ~ #status #tasks{
-	background: blue;
-	color: #fff;
-}
-*/
-
-
-
 
 section {
 	/*
