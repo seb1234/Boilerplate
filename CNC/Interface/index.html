@@ -1,45 +1,56 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-	<title>CNC Interface</title>
+  <title>CNC Interface</title>
+  <meta charset="utf-8">
+  <meta name="author" content="Sebastian Schuler, Dennis Czogalla, Florian Hrycaj">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./design/index.css">
-	<link rel="stylesheet" media="print" href="./design/print.css">
+  <link rel="stylesheet" media="print" href="./design/print.css">
+  <script src="./js/script.js"></script>
+  <script src="./js/sorttable.js"></script>
 </head>
+
 <body>
 
-	<header>
-		<h1>CNC Interface</h1>
-	</header>
+<label class="switch">
 
 	<aside>
 		<menu>
-			<li><a href="#status">Status</a></li>
-			<li><a href="#tasks">Tasks</a></li>
+			<p><a class="menuButton" href="#status">Status</a></p>
+			<p><a class="menuButton" href="#tasks">Tasks</a></p>
+      <p><a class="menuButton" href="#bots">Bots</a></p>
 		</menu>
 	</aside>
 
-	<main>
-		<section id="status">
-			<table id="status-overview">
-				<thead>
-					<tr>
-						<th>Workload</th>
-						<th>IP</th>
-						<th>Task</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td colspan="4">No BOTS active yet :(</td>
-					</tr>
-				</tbody>
-			</table>
+  <main>
+    <section id="status">
+      <table class="sortable" id="status-overview">
+        <thead>
+          <tr>
+              <th>Workload</th>
+              <th>IP</th>
+              <th>Task (ID)</th>
+              <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="dynamicTableBody">
+        </tbody>
+      </table>
 		</section>
-		<section id="tasks">
+
+    <section id="tasks">
 			TODO: Task Section
+      <div id="test">
+        Blah
+      </div>
 		</section>
-	</main>
+
+    <section id="bots">
+      TODO: Bot Section
+    </section>
+  </main>
 
 </body>
 </html>

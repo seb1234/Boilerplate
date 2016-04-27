@@ -1,6 +1,262 @@
+* {
+	margin: 0;
+	padding: 0;
+	}
 
 body {
-	color: #ffffff;
-	background: black;
+  background-color: #AAAAAA;
+  margin: 0;
+	padding: 0;
 }
 
+aside {
+  position: fixed;
+  width: 15%;
+  height: 100%;
+  background: #444444;
+}
+
+.menuButton {
+	position: relative;
+	display: block;
+	transition-property: background-color, color;
+	transition-duration: 500ms;
+	transition-timing-function: ease-out;
+	text-align: left;
+	background-color: grey;
+	color: white;
+	border-color: black;
+	font-family: sans-serif;
+	font-size: 22px;
+	text-decoration: none;
+	box-shadow: 2px 2px 1px black;
+	top: 100px;
+	margin-top: 10%;
+	margin-left: 15%;
+	margin-right: 15%;
+	border: solid 1px black;
+	padding: 4px 8px;
+}
+
+.menuButton:hover {
+  position: relative;
+  transition-property: background-color, color;
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  background-color:white;
+  color:black;
+  box-shadow: 2px 2px 1px black;
+}
+
+.menuButton:active {
+	position: relative;
+	transition-duration: 100ms;
+	color: #FF0000;
+}
+
+.menuButton.clicked {
+	transition-duration: 500ms;
+	transition-timing-function: ease-out;
+}
+
+main {
+	position: absolute;
+  margin-left: 15%;
+	height: 100%;
+	width: 85%;
+	text-align: right;
+	overflow: hidden;
+}
+
+#test {
+	position: relative;
+	margin-top: 100px;
+	margin-left: 300px;
+	height: 100px;
+	width: 100px;
+	background-color: white;
+	text-align: center;
+
+	transition: 1s;
+	transition-timing-function: ease-out;
+
+}
+
+#test:hover {
+	width: 300px;
+	height: 300px;
+	font-size: 40px;
+}
+
+/*
+#status:target ~ #tasks #bots,
+#tasks:target ~ #status #bots,
+#bots:target ~ #status #tasks{
+	background: blue;
+	color: #fff;
+}
+*/
+
+
+
+
+section {
+	/*
+	lt. Tafelanschrieb:
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	top: 100%;
+	*/
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#status {
+	background: lightyellow;
+}
+
+#status-overview {
+	position: absolute;
+	margin-top: 10%;
+	margin-left: 10%;
+	width: 80%;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid;
+  padding: 10px;
+  text-align: left;
+}
+
+tr {
+	background-color: #EEEEEE;
+	transition: background-color;
+	transition: 500ms;
+	transition-timing-function: ease-out;
+}
+
+tr:hover {
+	background-color: #BDBDBD;
+}
+
+#tasks {
+	background: lightgreen;
+
+}
+
+#bots {
+	background: lightblue;
+
+}
+
+
+
+
+.onoffswitch {
+		position: relative; width: 90px;
+		-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+		display: none;
+}
+.onoffswitch-label {
+		display: block; overflow: hidden; cursor: pointer;
+		border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+		display: block; width: 200%; margin-left: -100%;
+		transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+		display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+		font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+		box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+		content: "Start";
+		padding-left: 10px;
+		background-color: #34A7C1; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+		content: "Stop";
+		padding-right: 10px;
+		background-color: #EEEEEE; color: #999999;
+		text-align: right;
+}
+.onoffswitch-switch {
+		display: block; width: 18px; margin: 6px;
+		background: #FFFFFF;
+		position: absolute; top: 0; bottom: 0;
+		right: 56px;
+		border: 2px solid #999999; border-radius: 20px;
+		transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+		margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+		right: 0px;
+}
+
+
+input.switch:empty
+{
+	margin-left: -999px;
+}
+
+input.switch:empty ~ label
+{
+	position: relative;
+	float: left;
+	line-height: 1.6em;
+	text-indent: 4em;
+	margin: 0.2em 0;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.switch:empty ~ label:before,
+input.switch:empty ~ label:after
+{
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: ' ';
+	width: 3.6em;
+	background-color: #c33;
+	border-radius: 0.3em;
+	box-shadow: inset 0 0.2em 0 rgba(0,0,0,0.3);
+	-webkit-transition: all 100ms ease-in;
+	transition: all 100ms ease-in;
+}
+
+input.switch:empty ~ label:after
+{
+	width: 1.4em;
+	top: 0.1em;
+	bottom: 0.1em;
+	margin-left: 0.1em;
+	background-color: #fff;
+	border-radius: 0.15em;
+	box-shadow: inset 0 -0.2em 0 rgba(0,0,0,0.2);
+}
+
+input.switch:checked ~ label:before
+{
+	background-color: #393;
+}
+
+input.switch:checked ~ label:after
+{
+	margin-left: 2em;
+}
