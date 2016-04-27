@@ -15,14 +15,15 @@
 <body>
 	<aside>
 		<menu>
-			<p><a class="menuButton" href="#status">Status</a></p>
-			<p><a class="menuButton" href="#tasks">Tasks</a></p>
-      <p><a class="menuButton" href="#bots">Bots</a></p>
+			<p><a class="menuButtonAside" href="#status">Status</a></p>
+			<p><a class="menuButtonAside" href="#tasks">Tasks</a></p>
+      <p><a class="menuButtonAside" href="#bots">Bots</a></p>
+
 		</menu>
 	</aside>
 
   <main>
-    <section id="status">
+    <section class="switchPanel" id="status">
       <table class="sortable" id="status-overview">
         <thead>
           <tr>
@@ -37,17 +38,11 @@
       </table>
 		</section>
 
-    <section id="tasks">
-
-      <form>
-        Input:<br>
-        <input type="text" name="input"><br>
-      </form>
-
-
+    <section class="switchPanel" id="tasks">
+      TODO: Task Section
 		</section>
 
-    <section id="bots">
+    <section class="switchPanel" id="bots">
       TODO: Bot Section
     </section>
 

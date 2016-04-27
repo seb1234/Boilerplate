@@ -16,49 +16,6 @@ aside {
   background: #444444;
 }
 
-.menuButton {
-	position: relative;
-	display: block;
-	transition-property: background-color, color;
-	transition-duration: 500ms;
-	transition-timing-function: ease-out;
-	text-align: left;
-	background-color: grey;
-	color: white;
-	border-color: black;
-	font-family: sans-serif;
-	font-size: 22px;
-	text-decoration: none;
-	box-shadow: 2px 2px 1px black;
-	top: 100px;
-	margin-top: 10%;
-	margin-left: 15%;
-	margin-right: 15%;
-	border: solid 1px black;
-	padding: 4px 8px;
-}
-
-.menuButton:hover {
-  position: relative;
-  transition-property: background-color, color;
-  transition-duration: 500ms;
-  transition-timing-function: ease-out;
-  background-color:white;
-  color:black;
-  box-shadow: 2px 2px 1px black;
-}
-
-.menuButton:active {
-	position: relative;
-	transition-duration: 100ms;
-	color: #FF0000;
-}
-
-.menuButton.clicked {
-	transition-duration: 500ms;
-	transition-timing-function: ease-out;
-}
-
 main {
 	position: absolute;
   margin-left: 15%;
@@ -121,109 +78,72 @@ tr:hover {
 
 }
 
-
-
-
-.onoffswitch {
-		position: relative; width: 90px;
-		-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-}
-.onoffswitch-checkbox {
-		display: none;
-}
-.onoffswitch-label {
-		display: block; overflow: hidden; cursor: pointer;
-		border: 2px solid #999999; border-radius: 20px;
-}
-.onoffswitch-inner {
-		display: block; width: 200%; margin-left: -100%;
-		transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-		display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-		font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-		box-sizing: border-box;
-}
-.onoffswitch-inner:before {
-		content: "Start";
-		padding-left: 10px;
-		background-color: #34A7C1; color: #FFFFFF;
-}
-.onoffswitch-inner:after {
-		content: "Stop";
-		padding-right: 10px;
-		background-color: #EEEEEE; color: #999999;
-		text-align: right;
-}
-.onoffswitch-switch {
-		display: block; width: 18px; margin: 6px;
-		background: #FFFFFF;
-		position: absolute; top: 0; bottom: 0;
-		right: 56px;
-		border: 2px solid #999999; border-radius: 20px;
-		transition: all 0.3s ease-in 0s;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-		margin-left: 0;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-		right: 0px;
-}
-
-
-input.switch:empty
-{
-	margin-left: -999px;
-}
-
-input.switch:empty ~ label
-{
+/* Menu Buttons Sidebar mit Transition */
+.menuButtonAside {
 	position: relative;
-	float: left;
-	line-height: 1.6em;
-	text-indent: 4em;
-	margin: 0.2em 0;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-input.switch:empty ~ label:before,
-input.switch:empty ~ label:after
-{
-	position: absolute;
 	display: block;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	content: ' ';
-	width: 3.6em;
-	background-color: #c33;
-	border-radius: 0.3em;
-	box-shadow: inset 0 0.2em 0 rgba(0,0,0,0.3);
-	-webkit-transition: all 100ms ease-in;
-	transition: all 100ms ease-in;
+	transition-property: background-color, color;
+	transition-duration: 500ms;
+	transition-timing-function: ease-out;
+	text-align: left;
+	background-color: grey;
+	color: white;
+	border-color: black;
+	font-family: sans-serif;
+	font-size: 22px;
+	text-decoration: none;
+	box-shadow: 2px 2px 1px black;
+	top: 100px;
+	margin-top: 10%;
+	margin-left: 20%;
+	margin-right: 20%;
+	border: solid 1px black;
+	padding: 4px 24px;
 }
 
-input.switch:empty ~ label:after
-{
-	width: 1.4em;
-	top: 0.1em;
-	bottom: 0.1em;
-	margin-left: 0.1em;
-	background-color: #fff;
-	border-radius: 0.15em;
-	box-shadow: inset 0 -0.2em 0 rgba(0,0,0,0.2);
+.menuButtonAside:hover {
+  position: relative;
+  transition-property: background-color, color;
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  background-color:white;
+  color:black;
+  box-shadow: 2px 2px 1px black;
 }
 
-input.switch:checked ~ label:before
-{
-	background-color: #393;
+.menuButtonAside:active {
+	position: relative;
+	transition-duration: 100ms;
+	color: #FF0000;
 }
 
-input.switch:checked ~ label:after
-{
-	margin-left: 2em;
+.menuButtonAside.clicked {
+	transition-duration: 500ms;
+	transition-timing-function: ease-out;
 }
+
+/*-----------------------------------------------------------*/
+
+/* switch sections */
+.switchPanel{
+/*	min-width: 100%; */
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin-top: -150%;
+	position: absolute;
+/*	background: #000; */
+	box-shadow: 0px 4px 7px rgba(0,0,0,0.6);
+/*	z-index: 2; */
+	-webkit-transition: all 700ms ease-in-out;
+	-moz-transition: all 700ms ease-in-out;
+	-o-transition: all 700ms ease-in-out;
+	transition: all 700ms ease-in-out;
+}
+
+.switchPanel:target {
+	margin-top: 0%;
+/*	background-color: #ffcb00; */
+}
+
+/*-----------------------------------------------------------*/
