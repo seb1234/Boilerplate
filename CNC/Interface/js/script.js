@@ -22,6 +22,40 @@ function getData(){
 getData();
 
 
+function postRequest(){
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('POST', 'http://botnet.artificial.engineering:8080/api/tasks/');
+  xhr.responseType = 'json';
+  xhr.setRequestHeader("GruppeAllahuAkbar", "f971f01d8805354730fefa0c897a737f");
+
+  var json = {
+
+    id: 1,
+    type: 'hash-md5',
+    data: {
+      input: 'woot',
+      output: null
+
+    }
+
+  };
+
+  xhr.send(JSON.stringify(json));
+  setTimeout( postRequest, 30000 );
+
+}
+
+postRequest();
+
+function fetchData(){
+
+  var data = document.querySelector('#blablubb');
+
+
+}
+
 function createStatusTable(data) {
   var myArray = data;
   var i;
@@ -41,6 +75,7 @@ function createStatusTable(data) {
   document.getElementById("dynamicTableBody").innerHTML = out;
   }
 }
+
 
 var toggleName = function(clicked_id){
       //Start/Stop toggle
