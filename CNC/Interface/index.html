@@ -34,14 +34,45 @@
               <th>Action</th>
           </tr>
         </thead>
-        <tbody id="dynamicTableBody">
+        <tbody id="dynamicTableStatus">
         </tbody>
       </table>
 		</section>
 
     <section class="switchPanel" id="tasks">
       <h1>Tasks</h1>
-      TODO: Task Section
+
+      <div class="taskElements">
+        <form action="index.html#tasks" method="POST" name="tasksForm">
+          <label for="id">ID:</label>
+          <input type="text" name="id" id="id">
+
+          <label for="type">Type:</label>
+          <input type="text" name="type" id="type">
+
+          <label for="data">Data:</label>
+          <input type="text" name="data" id="data">
+
+          <input value="Submit" type="submit" onclick="submitTaskData()">
+        </form>
+
+      </div>
+
+      <div class="taskElements">
+        <table id="tasks-overview">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Data</th>
+                <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
 		</section>
 
     <section class="switchPanel" id="bots">

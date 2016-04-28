@@ -14,7 +14,6 @@ aside {
   position: fixed;
   width: 15%;
   height: 100%;
-
 }
 
 main {
@@ -30,25 +29,28 @@ h1 {
 	font-size: 3em;
 	font-family: monospace;
 	margin-top: 3%;
-	margin-left: 5%;
 }
 
 section {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	padding-left: 5%;
 }
 
 #status, #tasks, #bots {
 	background: rgba(66, 66, 66, 0.5);
 }
 
-#status-overview {
+#status-overview, #tasks-overview {
 	position: absolute;
-	margin-top: 5%;
-	margin-left: 5%;
-	width: 90%;
+	margin-top: 3%;
+	width: 80%;
   border-collapse: collapse;
+}
+
+.taskElements {
+	margin: 3% auto auto 0;
 }
 
 /* Konfiguration Tabelle */
@@ -60,9 +62,10 @@ td, th {
 
 tr {
 	background-color: #eeeeee;
-	transition: background-color;
-	transition: 500ms;
-	transition-timing-function: ease-out;
+	-webkit-transition: background-color 500ms ease-out;
+	-moz-transition: background-color 500ms ease-out;
+	-o-transition: background-color 500ms ease-out;
+	transition: background-color 500ms ease-out;
 }
 
 tr:hover {
@@ -74,9 +77,6 @@ tr:hover {
 	position: relative;
 	display: block;
 	border-radius: 10px;
-	transition-property: background-color, color;
-	transition-duration: 500ms;
-	transition-timing-function: ease-out;
 	text-align: center;
 	background-color: #eeeeee;
 	color: #000000;
@@ -91,27 +91,36 @@ tr:hover {
 	border: solid 3px #ef6c00;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	-webkit-transition: all 500ms ease-out;
+	-moz-transition: all 500ms ease-out;
+	-o-transition: all 500ms ease-out;
+	transition: all 500ms ease-out;
 }
 
 .menuButtonAside:hover {
   position: relative;
-  transition-property: background-color, color;
-  transition-duration: 500ms;
-  transition-timing-function: ease-out;
   background-color: #ff9800;
   color: #000000;
-  box-shadow: 3px 3px 2px black;
+	-webkit-transition: all 500ms ease-out;
+	-moz-transition: all 500ms ease-out;
+	-o-transition: all 500ms ease-out;
+	transition: all 500ms ease-out;
 }
 
 .menuButtonAside:active {
 	position: relative;
-	transition-duration: 100ms;
 	color: #ffffff;
+	-webkit-transition: all 100ms;
+	-moz-transition: all 100ms;
+	-o-transition: all 100ms;
+	transition: all 100ms;
 }
 
 .menuButtonAside.clicked {
-	transition-duration: 500ms;
-	transition-timing-function: ease-out;
+	-webkit-transition: all 500ms ease-out;
+	-moz-transition: all 500ms ease-out;
+	-o-transition: all 500ms ease-out;
+	transition: all 500ms ease-out;
 }
 
 /* switch sections */
@@ -121,10 +130,10 @@ tr:hover {
 	overflow-x: hidden;
 	margin-top: -150%;
 	position: absolute;
-	-webkit-transition: all 700ms ease-in-out;
-	-moz-transition: all 700ms ease-in-out;
-	-o-transition: all 700ms ease-in-out;
-	transition: all 700ms ease-in-out;
+	-webkit-transition: all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	-moz-transition: all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	-o-transition: all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	transition: all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .switchPanel:target {

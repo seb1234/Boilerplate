@@ -1,34 +1,51 @@
-function getData(){
-  var xhr = new XMLHttpRequest();
+/* Aufrufe */
+getStatusData();
 
-  xhr.open('GET', 'http://botnet.artificial.engineering:8080/api/Status/');
-  xhr.responseType = 'json';
 
-  xhr.onload = function() {
-    var data = xhr.response;
+/* Funktionen */
+function getStatusData(){
+  var xhrStatusData = new XMLHttpRequest();
+
+  xhrStatusData.open('GET', 'http://botnet.artificial.engineering:8080/api/Status/');
+  xhrStatusData.responseType = 'json';
+
+  xhrStatusData.onload = function() {
+    var data = xhrStatusData.response;
 
     if (data !== null) {
         createStatusTable(data);
-        // console.log(data);
     }
   };
-
-  xhr.send(null);
-
-  setTimeout( getData, 30000 ); // Get data and refresh page every 3000 ms (3 seconds)
-  //alert("Update completed");
+  xhrStatusData.send(null);
+  setTimeout(getStatusData, 30000);
 }
 
-getData();
+
+//Tasks Formular POST
+function submitTaskData() {
+  var xhrTaskData = new XMLHttpRequest();
+
+  xhrTaskData.open('POST', 'http://botnet.artificial.engineering:8080/api/tasks/');
+  xhrTaskData.responseType = 'json';
+  xhrTaskData.setRequestHeader("WAW404", "f971f01d8805354730fefa0c897a737f");
+
+  var myJson = {
+    id: document.getElementById('id').value,
+    type: document.getElementById('type').value,
+    data: document.getElementById('data').value
+  };
+
+  xhrTaskData.send(JSON.stringify(myJson));
+}
 
 
-function postRequest(){
+/* function postRequest() {
 
   var xhr = new XMLHttpRequest();
 
   xhr.open('POST', 'http://botnet.artificial.engineering:8080/api/tasks/');
   xhr.responseType = 'json';
-  xhr.setRequestHeader("GruppeAllahuAkbar", "f971f01d8805354730fefa0c897a737f");
+  xhr.setRequestHeader("WAW404", "f971f01d8805354730fefa0c897a737f");
 
   var json = {
 
@@ -48,6 +65,7 @@ function postRequest(){
 }
 
 postRequest();
+*/
 
 function fetchData(){
 
@@ -72,7 +90,7 @@ function createStatusTable(data) {
                   + '<button onclick="toggleName(this.id)" type="button" id="'+ myArray[i].id + 'stop" >Stop</button>' + '</td>';
       "</td></tr>";
 
-  document.getElementById("dynamicTableBody").innerHTML = out;
+  document.getElementById("dynamicTableStatus").innerHTML = out;
   }
 }
 
