@@ -4,7 +4,8 @@
 	}
 
 body {
-  background-color: #AAAAAA;
+	background-image: url("../img/background-orange.png");
+	background-size: cover;
   margin: 0;
 	padding: 0;
 }
@@ -13,7 +14,7 @@ aside {
   position: fixed;
   width: 15%;
   height: 100%;
-  background: #444444;
+
 }
 
 main {
@@ -24,81 +25,72 @@ main {
 	overflow: hidden;
 }
 
+h1 {
+	font-weight: bold;
+	font-size: 3em;
+	font-family: monospace;
+	margin-top: 3%;
+	margin-left: 5%;
+}
+
 section {
-	/*
-	lt. Tafelanschrieb:
 	position: absolute;
-	width: 100%;
-	left: 0px;
-	top: 100%;
-	*/
-	position: relative;
-	top: 0px;
-	left: 0px;
 	width: 100%;
 	height: 100%;
 }
 
-#status {
-	background: lightyellow;
+#status, #tasks, #bots {
+	background: rgba(66, 66, 66, 0.5);
 }
 
 #status-overview {
 	position: absolute;
-	margin-top: 10%;
-	margin-left: 10%;
-	width: 80%;
+	margin-top: 5%;
+	margin-left: 5%;
+	width: 90%;
   border-collapse: collapse;
 }
 
+/* Konfiguration Tabelle */
 td, th {
-  border: 1px solid;
+  border: 1px solid #ef6c00;
   padding: 10px;
   text-align: left;
 }
 
 tr {
-	background-color: #EEEEEE;
+	background-color: #eeeeee;
 	transition: background-color;
 	transition: 500ms;
 	transition-timing-function: ease-out;
 }
 
 tr:hover {
-	background-color: #BDBDBD;
+	background-color: #ff9800;
 }
 
-#tasks {
-	background: lightgreen;
-
-}
-
-#bots {
-	background: lightblue;
-
-}
-
-/* Menu Buttons Sidebar mit Transition */
+/* Menu Buttons der Sidebar mit Transition */
 .menuButtonAside {
 	position: relative;
 	display: block;
+	border-radius: 10px;
 	transition-property: background-color, color;
 	transition-duration: 500ms;
 	transition-timing-function: ease-out;
-	text-align: left;
-	background-color: grey;
-	color: white;
-	border-color: black;
+	text-align: center;
+	background-color: #eeeeee;
+	color: #000000;
 	font-family: sans-serif;
 	font-size: 22px;
 	text-decoration: none;
-	box-shadow: 2px 2px 1px black;
+	box-shadow: 3px 3px 2px black;
 	top: 100px;
 	margin-top: 10%;
 	margin-left: 20%;
 	margin-right: 20%;
-	border: solid 1px black;
-	padding: 4px 24px;
+	border: solid 3px #ef6c00;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .menuButtonAside:hover {
@@ -106,15 +98,15 @@ tr:hover {
   transition-property: background-color, color;
   transition-duration: 500ms;
   transition-timing-function: ease-out;
-  background-color:white;
-  color:black;
-  box-shadow: 2px 2px 1px black;
+  background-color: #ff9800;
+  color: #000000;
+  box-shadow: 3px 3px 2px black;
 }
 
 .menuButtonAside:active {
 	position: relative;
 	transition-duration: 100ms;
-	color: #FF0000;
+	color: #ffffff;
 }
 
 .menuButtonAside.clicked {
@@ -122,19 +114,13 @@ tr:hover {
 	transition-timing-function: ease-out;
 }
 
-/*-----------------------------------------------------------*/
-
 /* switch sections */
 .switchPanel{
-/*	min-width: 100%; */
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
 	margin-top: -150%;
 	position: absolute;
-/*	background: #000; */
-	box-shadow: 0px 4px 7px rgba(0,0,0,0.6);
-/*	z-index: 2; */
 	-webkit-transition: all 700ms ease-in-out;
 	-moz-transition: all 700ms ease-in-out;
 	-o-transition: all 700ms ease-in-out;
@@ -143,7 +129,4 @@ tr:hover {
 
 .switchPanel:target {
 	margin-top: 0%;
-/*	background-color: #ffcb00; */
 }
-
-/*-----------------------------------------------------------*/
