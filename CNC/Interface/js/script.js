@@ -1,4 +1,4 @@
-/* Aufrufe */
+ /* Aufrufe */
 getStatusData();
 getTasksData();
 
@@ -109,6 +109,84 @@ var toggleName = function(clicked_id){
 
 
 
+<<<<<<< HEAD
+function fetchData(){
+
+  var data = document.querySelector('#blablubb');
+
+
+}
+
+function createStatusTable(data) {
+  var myArray = data;
+  var i;
+  var out = "";
+
+  for(i = 0; i < myArray.length; i++) {
+
+      var button = "";
+      button = '<button onclick="sendPostRequest(this.id)" type="button" id="'+ myArray[i].id;
+
+      if(myArray[i].workload === 0){
+
+        button += '"style="background-color: red; color: white; border-style: none; padding: 3px;">Start</button>' + '</td>';
+
+      }else if(myArray[i].workload === 1){
+
+        button += '" style="background-color: green; color: white; border-style: none; padding: 3px;">Stop</button>' + '</td>';
+
+      }
+
+      out += "<tr style='font-family: Arial;'><td>" +
+      myArray[i].workload +
+      "</td><td>" +
+      myArray[i].ip +
+      "</td><td>" +
+      myArray[i].task + " (" + myArray[i].id + ")" +
+      "</td><td>" + button + "</td></tr>";
+
+      document.getElementById("dynamicTableStatus").innerHTML = out;
+
+  }
+}
+
+function setStatusFlag(status_id){
+
+  var xhrStatusFlag = new XMLHttpRequest();
+
+  xhrStatusFlag.open('POST', 'http://botnet.artificial.engineering:8080/api/Status', true);
+  xhrStatusFlag.responseType = 'json';
+  xhrStatusFlag.setRequestHeader('Content-Type', 'application/json');
+  xhrStatusFlag.setRequestHeader("WAW404", "f971f01d8805354730fefa0c897a737f");
+
+  xhrStatusFlag.onload = function(e){
+    console.log(this.response);
+  }
+
+
+  /* TODO:
+    - Parameterübergabe status_id an data.id funktioniert nicht
+    - status muss auch dynamisch übergeben werden, da sonst die Bots die ganze Zeit nur auf "false" gesetzt werden
+  */
+
+  var data = {
+
+    id: status_id,
+    status: false
+
+  };
+
+  xhrStatusFlag.send(JSON.stringify(data));
+
+}
+
+function sendPostRequest(clicked_id){
+
+  setStatusFlag(clicked_id);
+  getStatusData();
+
+}
+=======
 /* function postRequest() {
 
   var xhr = new XMLHttpRequest();
@@ -136,3 +214,4 @@ var toggleName = function(clicked_id){
 
 postRequest();
 */
+>>>>>>> 64c896912c22f4537d074a06d349c5a61daa9b6f
