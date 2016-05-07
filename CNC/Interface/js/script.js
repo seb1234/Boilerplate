@@ -53,9 +53,8 @@ function createTasksTable(tasksData) {
       "</td><td>" +
       tasksTableArray[j].data.output +
       "</td></tr>";
-
-  document.getElementById("dynamicTableTasks").innerHTML = tasksOut;
   }
+  document.getElementById("dynamicTableTasks").innerHTML = tasksOut;
 }
 
 
@@ -100,12 +99,12 @@ function createStatusTable(statusData) {
       if(myArray[i].workload === 0){
 
         json_data['status'] = true;
-        buttonPart = '"style="background-color: red; color: white; border-style: none; padding: 3px;">Start</button>' + '</td>';
+        buttonPart = '"style="background-color: green; color: white; border-style: none; padding: 3px;">Start</button>' + '</td>';
 
       }else if(myArray[i].workload === 1){
 
         json_data['status'] = false;
-        buttonPart = '" style="background-color: green; color: white; border-style: none; padding: 3px;">Stop</button>' + '</td>';
+        buttonPart = '" style="background-color: red; color: white; border-style: none; padding: 3px;">Stop</button>' + '</td>';
 
       }
 
@@ -119,17 +118,18 @@ function createStatusTable(statusData) {
       button = buttonHead + buttonPart;
 
 
-      statusOut += "<tr style='font-family: Arial;'><td>" +
-      myArray[i].workload +
+      statusOut += "<tr><td>" +
+      myArray[i].id +
       "</td><td>" +
       myArray[i].ip +
       "</td><td>" +
-      myArray[i].task + " (" + myArray[i].id + ")" +
-      "</td><td>" + button + "</td></tr>";
-
-      document.getElementById("dynamicTableStatus").innerHTML = statusOut;
-
+      myArray[i].task +
+      "</td><td>" +
+      myArray[i].workload +
+      "</td><td>" +
+      button + "</td></tr>";
   }
+  document.getElementById("dynamicTableStatus").innerHTML = statusOut;
 }
 
 function setStatusFlag(json_data){

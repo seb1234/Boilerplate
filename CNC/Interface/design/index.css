@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: Arial;
 	}
 
 body {
@@ -12,8 +13,12 @@ body {
 
 aside {
   position: fixed;
-  width: 15%;
   height: 100%;
+  width: 15%;
+}
+
+menu {
+	margin-top: 30%;
 }
 
 main {
@@ -25,10 +30,14 @@ main {
 }
 
 h1 {
-	font-weight: bold;
-	font-size: 3em;
-	font-family: monospace;
+	font-size: 2em;
 	margin-top: 3%;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin-top: 5%;
+	text-align: center;
 }
 
 section {
@@ -39,7 +48,7 @@ section {
 }
 
 #status, #tasks, #bots {
-	background: rgba(66, 66, 66, 0.5);
+	background: rgba(77, 77, 77, 0.5);
 }
 
 #status-overview, #tasks-overview {
@@ -74,7 +83,6 @@ tr:hover {
 
 /* Menu Buttons der Sidebar mit Transition */
 .menuButtonAside {
-	position: relative;
 	display: block;
 	border-radius: 10px;
 	text-align: center;
@@ -98,7 +106,6 @@ tr:hover {
 }
 
 .menuButtonAside:hover {
-  position: relative;
   background-color: #ff9800;
   color: #000000;
 	-webkit-transition: all 500ms ease-out;
@@ -108,7 +115,6 @@ tr:hover {
 }
 
 .menuButtonAside:active {
-	position: relative;
 	color: #ffffff;
 	-webkit-transition: all 100ms;
 	-moz-transition: all 100ms;
