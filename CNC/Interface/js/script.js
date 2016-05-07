@@ -20,28 +20,6 @@ function getStatusData(){
   xhrStatusData.send(null);
 }
 
-function createStatusTable(statusData) {
-  var statusTableArray = statusData;
-  var i;
-  var statusOut = "";
-
-  for(i = 0; i < statusTableArray.length; i++) {
-      statusOut += "<tr><td>" +
-      statusTableArray[i].id +
-      "</td><td>" +
-      statusTableArray[i].ip +
-      "</td><td>" +
-      statusTableArray[i].task +
-      "</td><td>" +
-      statusTableArray[i].workload +
-      "</td><td>" + '<button onclick="toggleName(this.id)" type="button" id="'
-          + statusTableArray[i].id + 'stop" >Stop</button>' + '</td>';
-      "</td></tr>";
-
-  document.getElementById("dynamicTableStatus").innerHTML = statusOut;
-  }
-}
-
 
 /* Tasks */
 function getTasksData(){
@@ -97,19 +75,7 @@ function submitTaskData() {
   xhrTaskData.send(JSON.stringify(myJson));
 }
 
-var toggleName = function(clicked_id){
-      //Start/Stop toggle
-    if(document.getElementById(clicked_id).innerHTML == "Stop"){
-      document.getElementById(clicked_id).innerHTML = "Start";
-    }
-    else if(document.getElementById(clicked_id).innerHTML == "Start"){
-      document.getElementById(clicked_id).innerHTML = "Stop";
-    }
-  };
 
-
-
-<<<<<<< HEAD
 function fetchData(){
 
   var data = document.querySelector('#blablubb');
@@ -117,27 +83,43 @@ function fetchData(){
 
 }
 
-function createStatusTable(data) {
-  var myArray = data;
+function createStatusTable(statusData) {
+  var myArray = statusData;
   var i;
-  var out = "";
+  var statusOut = "";
 
   for(i = 0; i < myArray.length; i++) {
 
-      var button = "";
-      button = '<button onclick="sendPostRequest(this.id)" type="button" id="'+ myArray[i].id;
+      var json_data = {};
+
+      json_data['id'] = Number(myArray[i].id);
+
+      var buttonPart = "";
+      var buttonHead = "";
 
       if(myArray[i].workload === 0){
 
-        button += '"style="background-color: red; color: white; border-style: none; padding: 3px;">Start</button>' + '</td>';
+        json_data['status'] = true;
+        buttonPart = '"style="background-color: red; color: white; border-style: none; padding: 3px;">Start</button>' + '</td>';
 
       }else if(myArray[i].workload === 1){
 
-        button += '" style="background-color: green; color: white; border-style: none; padding: 3px;">Stop</button>' + '</td>';
+        json_data['status'] = false;
+        buttonPart = '" style="background-color: green; color: white; border-style: none; padding: 3px;">Stop</button>' + '</td>';
 
       }
 
-      out += "<tr style='font-family: Arial;'><td>" +
+      //ID und Status werden einfach als ID für die Buttons verwendet. Dafür muss der String aber escaped werden,
+      // da es sonst zu Problemen mit den Anführungszeichen kommt
+
+      var button_id = JSON.stringify(json_data);
+      buttonHead += '<button onclick="sendPostRequest(this.id)" type="button" id="' +  escape(button_id);
+
+      var button = "";
+      button = buttonHead + buttonPart;
+
+
+      statusOut += "<tr style='font-family: Arial;'><td>" +
       myArray[i].workload +
       "</td><td>" +
       myArray[i].ip +
@@ -145,12 +127,12 @@ function createStatusTable(data) {
       myArray[i].task + " (" + myArray[i].id + ")" +
       "</td><td>" + button + "</td></tr>";
 
-      document.getElementById("dynamicTableStatus").innerHTML = out;
+      document.getElementById("dynamicTableStatus").innerHTML = statusOut;
 
   }
 }
 
-function setStatusFlag(status_id){
+function setStatusFlag(json_data){
 
   var xhrStatusFlag = new XMLHttpRequest();
 
@@ -163,20 +145,7 @@ function setStatusFlag(status_id){
     console.log(this.response);
   }
 
-
-  /* TODO:
-    - Parameterübergabe status_id an data.id funktioniert nicht
-    - status muss auch dynamisch übergeben werden, da sonst die Bots die ganze Zeit nur auf "false" gesetzt werden
-  */
-
-  var data = {
-
-    id: status_id,
-    status: false
-
-  };
-
-  xhrStatusFlag.send(JSON.stringify(data));
+  xhrStatusFlag.send(unescape(json_data));
 
 }
 
@@ -186,7 +155,7 @@ function sendPostRequest(clicked_id){
   getStatusData();
 
 }
-=======
+//=======
 /* function postRequest() {
 
   var xhr = new XMLHttpRequest();
@@ -214,4 +183,3 @@ function sendPostRequest(clicked_id){
 
 postRequest();
 */
->>>>>>> 64c896912c22f4537d074a06d349c5a61daa9b6f
