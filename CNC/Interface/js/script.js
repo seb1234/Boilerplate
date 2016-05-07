@@ -49,7 +49,7 @@ function getStatusData(){
           "</td><td>" +
           button + "</td></tr>";
       }
-      document.getElementById("dynamicTableStatus").innerHTML = statusOut;
+      document.getElementById('dynamicTableStatus').innerHTML = statusOut;
     }
   };
   xhrStatusData.send(null);
@@ -85,60 +85,32 @@ function getTasksData() {
 }
 
 function submitTaskData() {
-  var xhrTaskData = new XMLHttpRequest();
+  var xhrSubmitTaskData = new XMLHttpRequest();
 
-  xhrTaskData.open('POST', 'http://botnet.artificial.engineering:8080/api/Tasks/');
-  xhrTaskData.responseType = 'json';
-  xhrTaskData.setRequestHeader('Content-Type', 'application/json');
-  xhrTaskData.setRequestHeader('token', 'f971f01d8805354730fefa0c897a737f');
+  xhrSubmitTaskData.open('POST', 'http://botnet.artificial.engineering:8080/api/Tasks/');
+  xhrSubmitTaskData.responseType = 'json';
+  xhrSubmitTaskData.setRequestHeader('Content-Type', 'application/json');
+  xhrSubmitTaskData.setRequestHeader('token', 'f971f01d8805354730fefa0c897a737f');
 
-  var myJson = {
-    id: document.getElementById('id').value,
-    type: document.getElementById('type').value,
-    data: document.getElementById('data').value
-  };
-
-  xhrTaskData.onload = function (e) {
+  xhrSubmitTaskData.onload = function () {
       if (this.status == 200) {
-          var data = xhrTaskData.response;
+          var data = xhrSubmitTaskData.response;
           if (data !== null && data.message != "OK")
               alert("ERROR");
       }
   };
 
-  xhrTaskData.send(JSON.stringify(myJson));
+  var myJson = {
+    "type": document.getElementById('type').value,
+    "data": {
+      "input": document.getElementById('taskInput').value,
+      "output": null
+    }
+  };
+
+  xhrSubmitTaskData.send(JSON.stringify(myJson));
+  alert("Aufgabe wurde gesendet");
 }
-
-function sendPost(api, json, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', botnet+api, true);
-    xhr.responseType = "json";
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('token', token);
-
-    xhr.onload = function (e) {
-        if (this.status == 200) {
-            var data = xhr.response;
-            if (data !== null && data.message != "OK")
-                alert("ERROR");
-            else
-                callback();
-        }
-    };
-
-    xhr.send(json);
-}
-
-
-
-
-function fetchData(){
-
-  var data = document.querySelector('#blablubb');
-
-
-}
-
 
 
 function setStatusFlag(json_data){
