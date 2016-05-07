@@ -43,37 +43,31 @@
     <section class="switchPanel" id="tasks">
       <h1>Tasks</h1>
 
-      <div class="taskElements">
-        <form action="index.html#tasks" method="POST" name="tasksForm">
-          <label for="id">ID:</label>
-          <input type="text" name="id" id="id">
+      <form class="taskElements" id="taskForm" action="index.html#tasks" method="POST" name="tasksForm">
+        <label for="taskInput">Input:</label>
+        <input id="taskInput" type="text" name="taskInput">
 
-          <label for="type">Type:</label>
-          <input type="text" name="type" id="type">
+        <select id="type" name="type">
+            <option>hash-md5</option>
+            <option>hash-sha256</option>
+            <option>crack-md5</option>
+        </select>
 
-          <label for="data">Data:</label>
-          <input type="text" name="data" id="data">
+        <input type="submit" value="Submit" onclick="submitTaskData()">
+      </form>
 
-          <input value="Submit" type="submit" onclick="submitTaskData()">
-        </form>
-
-      </div>
-
-      <div class="taskElements">
-        <table id="tasks-overview">
-          <thead>
-            <tr>
-                <th>ID</th>
-                <th>Type</th>
-                <th>Input</th>
-                <th>Output</th>
-            </tr>
-          </thead>
-          <tbody id="dynamicTableTasks">
-          </tbody>
-        </table>
-      </div>
-
+      <table class="taskElements" id="tasks-overview">
+        <thead>
+          <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Input</th>
+              <th>Output</th>
+          </tr>
+        </thead>
+        <tbody id="dynamicTableTasks">
+        </tbody>
+      </table>
 		</section>
 
     <section class="switchPanel" id="bots">
