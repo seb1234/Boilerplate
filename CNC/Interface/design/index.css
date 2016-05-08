@@ -64,6 +64,7 @@ section {
 
 /* Konfiguration Tabelle */
 td, th {
+	max-width: 200px;
   border: 1px solid #ef6c00;
   padding: 10px;
   text-align: left;
