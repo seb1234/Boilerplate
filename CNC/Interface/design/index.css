@@ -62,6 +62,11 @@ section {
 	margin: 3% auto auto 0;
 }
 
+.refreshButton {
+	margin-top: 20px;
+	padding: 5px;
+}
+
 /* Konfiguration Tabelle */
 td, th {
 	max-width: 200px;
@@ -89,7 +94,6 @@ tr:hover {
 	text-align: center;
 	background-color: #eeeeee;
 	color: #000000;
-	font-family: sans-serif;
 	font-size: 22px;
 	text-decoration: none;
 	box-shadow: 3px 3px 2px black;
