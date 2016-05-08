@@ -25,6 +25,7 @@
   <main>
     <section class="switchPanel" id="status">
       <h1>Status</h1>
+      <button class="refreshButton" type="button" name="refreshStatus" onclick="getStatusData()">Refresh Table</button>
       <table class="sortable" id="status-overview">
         <thead>
           <tr>
@@ -42,7 +43,6 @@
 
     <section class="switchPanel" id="tasks">
       <h1>Tasks</h1>
-
       <form class="taskElements" id="taskForm" action="index.html#tasks" method="POST" name="tasksForm">
         <label for="taskInput">Input:</label>
         <input id="taskInput" type="text" name="taskInput">
@@ -55,7 +55,7 @@
 
         <input type="submit" value="Submit" onclick="submitTaskData()">
       </form>
-
+      <button class="refreshButton" type="button" name="refreshTasks" onclick="getTasksData()">Refresh Table</button>
       <table class="taskElements" id="tasks-overview">
         <thead>
           <tr>
