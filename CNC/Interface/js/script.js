@@ -6,7 +6,7 @@ getTasksData();
 function getStatusData(){
   var xhrStatusData = new XMLHttpRequest();
 
-  xhrStatusData.open('GET', 'http://botnet.artificial.engineering:8080/api/Status/');
+  xhrStatusData.open('GET', 'http://localhost:3000/api/Status/');
   xhrStatusData.responseType = 'json';
 
   xhrStatusData.onload = function() {
@@ -60,7 +60,7 @@ function getStatusData(){
 function getTasksData() {
   var xhrTasksData = new XMLHttpRequest();
 
-  xhrTasksData.open('GET', 'http://botnet.artificial.engineering:8080/api/Tasks/');
+  xhrTasksData.open('GET', 'http://localhost:3000/api/Tasks/');
   xhrTasksData.responseType = 'json';
 
   xhrTasksData.onload = function() {
@@ -87,7 +87,7 @@ function getTasksData() {
 function submitTaskData() {
   var xhrSubmitTaskData = new XMLHttpRequest();
 
-  xhrSubmitTaskData.open('POST', 'http://botnet.artificial.engineering:8080/api/Tasks/');
+  xhrSubmitTaskData.open('POST', 'http://localhost:3000/api/Tasks/');
   xhrSubmitTaskData.responseType = 'json';
   xhrSubmitTaskData.setRequestHeader('Content-Type', 'application/json');
   xhrSubmitTaskData.setRequestHeader('token', 'f971f01d8805354730fefa0c897a737f');
@@ -101,6 +101,7 @@ function submitTaskData() {
   };
 
   var myJson = {
+    "id": document.getElementById('id').value,
     "type": document.getElementById('type').value,
     "data": {
       "input": document.getElementById('taskInput').value,
@@ -117,7 +118,7 @@ function setStatusFlag(json_data){
 
   var xhrStatusFlag = new XMLHttpRequest();
 
-  xhrStatusFlag.open('POST', 'http://botnet.artificial.engineering:8080/api/Status', true);
+  xhrStatusFlag.open('POST', 'http://localhost:3000/api/Status/', true);
   xhrStatusFlag.responseType = 'json';
   xhrStatusFlag.setRequestHeader('Content-Type', 'application/json');
   xhrStatusFlag.setRequestHeader("WAW404", "f971f01d8805354730fefa0c897a737f");
