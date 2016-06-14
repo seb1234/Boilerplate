@@ -1,0 +1,1 @@
+[{"id":1,"type":"hash-md5","data":{"input":"Testeintrag","output":"d3b07384d113edec49eaa6238ad5ff00"}},{"id":2,"type":"hash-md5","data":{"input":"dfgdfgdfg","output":"55542542b9318fb4a7fd6f7dd8f1a506"}},{"id":3,"type":"crack-md5","data":{"input":"blub blub","output":"e74efee60aa87aa62214bd43d2c5c0e7"}}]

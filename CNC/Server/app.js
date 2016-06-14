@@ -3,8 +3,12 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var app = express();
 var cors = require('cors');
+var fs = require ("fs");
 
 var acceptedToken = 'f971f01d8805354730fefa0c897a737f';
+
+var bots;
+var tasks;
 
 md5 = require('js-md5');
 sha256 = require('js-sha256');
@@ -36,34 +40,20 @@ var isTokenAccepted = function(token) {
 
 
 //=======STATUS========
+fs.readFile('status.txt', function read(err, fd) {
+   if (err) {
+       return console.error(err);
+   }
+    bots = JSON.parse(fd);
+});
 
-var bots = [
-            {
-              "id": 1,
-              "ip": "95.215.45.239",
-              "task": 0,
-              "workload": 1
-            },
-            {
-              "id": 2,
-              "ip": "192.30.252.153",
-              "task": 0,
-              "workload": 1
-            },
-            {
-              "id": 3,
-              "ip": "192.30.253.154",
-              "task": 0,
-              "workload": 0
-            },
-            {
-              "id": 4,
-              "ip": "2a02:8071:aa2:fa00:910d:8f43:8516:a59/64",
-              "task": 0,
-              "workload": 1
-            }
-          ];
 
+fs.readFile('task.txt', function read(err, fd) {
+   if (err) {
+       return console.error(err);
+   }
+    tasks = JSON.parse(fd);
+});
 
 //Status Tabelle
 app.get('/api/status', function (req, res) {
@@ -86,22 +76,13 @@ app.post('/api/status', function(req, res, next) {
 
   }
 
+  fs.writeFile('status.txt', JSON.stringify(bots), function (err) {
+  if (err) return console.log(err);
+  });
+
 });
 
 //=========TASKS=========
-
-var tasks = [
-              {
-                "id": 1,
-            		"type": "hash-md5",
-            		"data": {
-            			"input": "Testeintrag",
-            			"output": "d3b07384d113edec49eaa6238ad5ff00"
-            		}
-              }
-
-];
-
 //Task Tabelle
 app.get('/api/tasks', function (req, res) {
 
@@ -109,6 +90,79 @@ app.get('/api/tasks', function (req, res) {
   res.json(tasks);
 
 });
+
+
+//==============ID===============
+
+app.get('/api/tasks/:id', function (req, res){
+
+    var available = false;
+
+    for(var i = 0; i < tasks.length; i++){
+      if(tasks[i]['id'] == req.params.id){
+        available = true;
+        res.json(tasks[i]);
+      }
+    }
+
+    if(!available){
+      res.json('FEHLER: Task mit der ID ' + req.params.id + ' wurde nicht gefunden!');
+    }
+});
+
+app.post('/api/tasks/:id', function (req, res){
+
+    var available = false;
+
+    for(var i = 0; i < tasks.length; i++){
+      if(tasks[i]['id'] == req.params.id){
+        available = true;
+      }
+    }
+
+    if(!available){
+      res.json('message: NOT OK');
+    }else{
+
+      res.json('message: OK');
+    }
+});
+
+app.get('/api/status/:id', function (req, res){
+
+    var available = false;
+
+    for(var i = 0; i < tasks.length; i++){
+      if(bots[i]['id'] == req.params.id){
+        available = true;
+        res.json(bots[i]);
+      }
+    }
+
+    if(!available){
+      res.json('FEHLER: Bot mit der ID ' + req.params.id + ' wurde nicht gefunden!');
+    }
+});
+
+app.post('/api/status/:id', function (req, res){
+
+    var available = false;
+
+    for(var i = 0; i < tasks.length; i++){
+      if(tasks[i]['id'] == req.params.id){
+        available = true;
+      }
+    }
+
+    if(!available){
+        res.json('message: NOT OK');
+      }else{
+
+        res.json('message: OK');
+      }
+});
+
+//=====================================
 
   //neue Nachricht in Task Tabelle hinzufügen
   app.post('/api/tasks', function(req, res, next){
@@ -156,7 +210,14 @@ app.get('/api/tasks', function (req, res) {
         if(!available){
           console.log('FEHLER: Task mit der ID ' + req.body.id + ' wurde nicht gefunden!');
         }
+
       }
+
+      fs.writeFile('task.txt', JSON.stringify(tasks), function (err) {
+      if (err) return console.log(err);
+      });
+
+
 }
 });
 
